@@ -1,6 +1,6 @@
 # mvc-tech-blog
 
-![Alt text](./images/ch14%20ss.png)
+![Alt text](./images/mvc%20tech%20blog%20ss.png)
 
 ## Description
 
@@ -11,7 +11,7 @@ Above this text you will find screenshot of the deployed website via Heroku.
 Within the repository you will all the files that were needed in order to have the website fully functioning.
 
 To use this application, user will need to clone this repo onto their system, set up the database via MySQL, then run the following line into the terminal, 'npm run start'.
-Afterwards, the server will now run live and you can you visit it via http://localhost:3001/login
+Afterwards, the server will now run live and you can you visit it via http://localhost:3005/
 
 Or you can visit the deployed website at https://warm-bastion-55547.herokuapp.com/
 
