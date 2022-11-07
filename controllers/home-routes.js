@@ -6,10 +6,8 @@ const router = require('express').Router();
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
-            include: [
-                {
-                    model: User,
-                }]
+            include: 
+                [User]
         });
         const posts = postData.map((post) =>
             post.get({plain: true})
@@ -41,29 +39,31 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-router.get("/post/:id", (req, res) => {
-    Post.findByPk(req.params.id, {
-        include: [
-            User,
-            {
-                model: Comment,
-                include: [User],
-            },
-        ],
-    })
-        .then((postData) => {
-            if(postData) {
-                const post = postData.get({plain: true});
-
-                res.render("single-post", {post});
-            } else {
-                res.status(404).end();
-            }
-        })
-        .catch((err) => {
-            res.status(500).json(err);
+router.get("/post/:id", async (req, res) => {
+    try {
+        
+        const postData = await Post.findByPk(req.params.id, {
+            include: [
+                User,
+                {
+                    model: Comment,
+                    include: [User],
+                },
+            ],
         });
+                
+                if(postData) {
+                    const post = postData.get({plain: true});
+
+                    res.render("single-post", {post});
+                } else {
+                    res.status(404).end();
+                };
+        } catch (err){
+            res.status(500).json(err);
+        };
 });
+
 
 
 module.exports = router;
