@@ -10,8 +10,11 @@ router.post('/', async (req, res) => {
             password: req.body.password,
         });
         req.session.save(() => {
+            req.session.userId = userData.id;
+            req.session.username = userData.username;
             req.session.loggedIn = true;
-            req.session.loggedInId = userData.dataValues.id;
+            // req.session.loggedInId = userData.dataValues.id;
+            
             res.status(200).json(userData);
         });
     } catch(err) {
@@ -47,8 +50,10 @@ router.post('/login', async (req, res) => {
         }
 
         req.session.save(() => {
+            req.session.userId = userData.id;
+            req.session.username = userData.username;
             req.session.loggedIn = true;
-            req.session.loggedInId = userData.dataValues.id;
+            // req.session.loggedInId = userData.dataValues.id;
 
             res
                 .status(200)

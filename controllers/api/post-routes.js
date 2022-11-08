@@ -14,13 +14,13 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.post('/comment', async (req, res) => {
-    const commentData = await Comment.create({
-        text: req.body.text,
-        post_id: req.body.id
-    });
-    console.log(commentData.get({plain: true}));
-});
+// router.post('/comment', async (req, res) => {
+//     const commentData = await Comment.create({
+//         text: req.body.text,
+//         post_id: req.body.id
+//     });
+//     console.log(commentData.get({plain: true}));
+// });
 
 
 module.exports = router;
